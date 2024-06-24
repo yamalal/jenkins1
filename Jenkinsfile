@@ -3,6 +3,7 @@ pipeline{
    environment {
      MY_VAR= 'ya'
      MY_NUMBER= 123
+     DALABA='BELLE'
    }
 
    stages {
@@ -16,6 +17,7 @@ pipeline{
             echo "MY_VAR: ${env.MY_VAR}"
             echo "MY_NUMBER: ${env.MY_NUMBER}"
             sh 'printenv'
+            echo "DALABA: ${env.DALABA}"
         }
       }
    }
