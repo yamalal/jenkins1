@@ -21,6 +21,10 @@ pipeline{
      choice(name: 'CHOICE', choices:[ 'un', 'deux', 'trois'], description: 'liste ')
      password(name: 'PASSWORD', description: 'un mot de passe')
    }
+
+   triggers {
+    cron('* * * * *')
+   }
    stages {
       stage('build') {
         steps{
