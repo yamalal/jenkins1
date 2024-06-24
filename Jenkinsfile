@@ -4,6 +4,9 @@ pipeline{
             image 'node:21-alpine'
         }
     }
+    options {
+        timeout(time: 1, unit: "HOURS")
+    }
 //    agent any
 //    environment {
 //      MY_VAR= 'ya'
@@ -13,6 +16,7 @@ pipeline{
 
    stages {
       stage('build') {
+       
         steps{
             sh ' npm -v'
 
