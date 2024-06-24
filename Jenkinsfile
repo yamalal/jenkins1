@@ -22,9 +22,12 @@ pipeline{
 //      password(name: 'PASSWORD', description: 'un mot de passe')
 //    }
 
-   triggers {
-    cron('* * * * *')
-   }
+//    triggers {
+//     cron('* * * * *')
+//    }
+     triggers {
+        pollSCM('* * * * *')
+     }
    stages {
       stage('build') {
         steps{
