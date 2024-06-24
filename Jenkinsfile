@@ -21,7 +21,7 @@ pipeline{
      choice(name: 'CHOICE', choices:[ 'un', 'deux', 'trois'], description: 'liste ')
      password(name: 'PASSWORD', description: 'un mot de passe')
    }
-
+   stages {
       stage('build') {
         steps{
             echo "BRANCH_NAME: ${env.BRANCH_NAME}"
@@ -49,3 +49,4 @@ pipeline{
         echo 'succes'
     }
    }
+}  
