@@ -1,5 +1,5 @@
 pipeline{
-    // agent any 
+    agent any 
     // agent {
     //     docker {
     //         image 'node:21-alpine'
@@ -8,7 +8,7 @@ pipeline{
     options {
         timeout(time: 1, unit: "HOURS")
     }
-   agent any
+//    agent any
    environment {
      MY_VAR= 'ya'
      MY_NUMBER= 123
@@ -18,17 +18,9 @@ pipeline{
      string(name: 'NAME', defaultValue: 'Mr DIALLO', description: 'Qui est ce ?')
      text(name: 'TEXT', defaultValue: 'un text', description: 'Une description ?')
      booleanParam(name: 'TOGGLE', defaultValue: true, description: 'trur ou false')
-     choice(name: 'CHOICE', choices[ 'un', 'deux', 'trois'], description: 'liste ')
+     choice(name: 'CHOICE', choices:[ 'un', 'deux', 'trois'], description: 'liste ')
      password(name: 'PASSWORD', description: 'un mot de passe')
    }
-//    stages {
-//       stage('build') {
-       
-//         steps{
-//             sh ' npm -v'
-
-//         }
-//       }
 
       stage('build') {
         steps{
