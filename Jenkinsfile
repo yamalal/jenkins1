@@ -1,12 +1,13 @@
 pipeline{
   agent any
-  tools {
-    gradle 'gradle8.9'
-  }
+  // tools {
+  //   gradle 'gradle8.9'
+  // }
   stages {
     stage('build') {
       steps {
-        sh 'gradle -v'
+        emailext(to: 'malalsowfatou93@gmail.com', body: 'test bodt', subject: 'test subject')
+        // sh 'gradle -v'
       //  sh 'echo hello > toto.txt'
       //  archiveArtifacts(artifacts: '*.txt')
       }
