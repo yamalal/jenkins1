@@ -15,7 +15,7 @@ pipeline{
         }
         stages {
           stage('Build') {
-            stages {
+            steps {
               echo "construire pour ${PLATFORM} - ${BROWSER}"
             }
           }
