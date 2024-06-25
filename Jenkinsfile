@@ -13,6 +13,7 @@ pipeline{
      MY_VAR= 'ya'
      MY_NUMBER= 123
      DALABA='BELLE'
+     DEPLOY_TO='production'
    }
 //    parameters {
 //      string(name: 'NAME', defaultValue: 'Mr DIALLO', description: 'Qui est ce ?')
@@ -57,6 +58,12 @@ pipeline{
           parameters{
             string(name: 'VERSION', defaultValue: 'latest', description: 'Une version?')
           }
+        }
+        when {
+          allOf {
+            branch'main'
+            environment name: 'DEPLOY_TO', value: 'production'
+        }
         }
         steps {
           echo "user: ${USER_SUBMIT}"
