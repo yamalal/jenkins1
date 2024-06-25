@@ -5,11 +5,11 @@ pipeline{
       matrix {
         axes {
           axis {
-            name: 'PLATFORM'
+            name'PLATFORM'
             values 'linux', 'macos', 'windows'
           }
           axis {
-            name: 'BROWSER'
+            name 'BROWSER'
             values 'firefox','chrome','safari'
           }
         }
