@@ -1,33 +1,39 @@
 pipeline{
   agent any
   stages {
-    stage('build and test') {
-      matrix {
-        axes {
-          axis {
-            name'PLATFORM'
-            values 'linux', 'macos', 'windows'
-          }
-          axis {
-            name 'BROWSER'
-            values 'firefox','chrome','safari'
-          }
-        }
-        stages {
-          stage('Build') {
-            steps {
-              echo "construire pour ${PLATFORM} - ${BROWSER}"
-            }
-          }
-          stage('test') {
-            steps {
-               echo "test pour ${PLATFORM} - ${BROWSER}"
-            }
-          }
-        }
-        
+    stage('build') {
+      steps {
+       sh 'echo hello > toto.txt'
+       archiveArtifacts(artifacts: '*.txt')
       }
     }
+  //   stage('build and test') {
+  //     matrix {
+  //       axes {
+  //         axis {
+  //           name'PLATFORM'
+  //           values 'linux', 'macos', 'windows'
+  //         }
+  //         axis {
+  //           name 'BROWSER'
+  //           values 'firefox','chrome','safari'
+  //         }
+  //       }
+  //       stages {
+  //         stage('Build') {
+  //           steps {
+  //             echo "construire pour ${PLATFORM} - ${BROWSER}"
+  //           }
+  //         }
+  //         stage('test') {
+  //           steps {
+  //              echo "test pour ${PLATFORM} - ${BROWSER}"
+  //           }
+  //         }
+  //       }
+        
+  //     }
+  //   }
 
   }
 
