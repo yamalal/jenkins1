@@ -23,14 +23,18 @@ pipeline {
         MY_VAR='une variable'
         USER= 'malal'
     }
-    parameters {
-        string(name: 'NAME', defaultValue: 'Malal', description: 'Qui est ce ?')
-        text(name: 'TEXT', defaultValue: 'text', description: 'une description')
-        booleanParam(name: 'TOGGLE',defaultValue: true, description: 'true or false' )
-        choice(name: 'CHOICE', choices: ['un', 'deux', 'trois'], description: 'liste')
-        password(name: 'PASSWORD', description: 'un mot de passe')
 
+    triggers {
+        cron ('* * * * *')
     }
+    // parameters {
+    //     string(name: 'NAME', defaultValue: 'Malal', description: 'Qui est ce ?')
+    //     text(name: 'TEXT', defaultValue: 'text', description: 'une description')
+    //     booleanParam(name: 'TOGGLE',defaultValue: true, description: 'true or false' )
+    //     choice(name: 'CHOICE', choices: ['un', 'deux', 'trois'], description: 'liste')
+    //     password(name: 'PASSWORD', description: 'un mot de passe')
+
+    // }
     stages {
         stage('Build') {
             steps {
@@ -44,15 +48,15 @@ pipeline {
                 sh 'printenv'
             }
         }
-        stage('Test') {
-            steps {
-                echo " le nom est : NAME ${ NAME }"
-                echo " le text vaut : TEXT ${ TEXT }"
-                echo " TOGGLE : ${ TOGGLE }"
-                echo " CHOICE : ${ CHOICE }"
-                echo ' PASSWORD: ${ PASSWORD }'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo " le nom est : NAME ${ NAME }"
+        //         echo " le text vaut : TEXT ${ TEXT }"
+        //         echo " TOGGLE : ${ TOGGLE }"
+        //         echo " CHOICE : ${ CHOICE }"
+        //         echo ' PASSWORD: ${ PASSWORD }'
+        //     }
+        // }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying....'
