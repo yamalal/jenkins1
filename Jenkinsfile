@@ -59,20 +59,23 @@ pipeline {
         //     }
         // }
         stage('Deployment to the production') {
-            input {
-                message ' Voulez vous deployez en production ?'
-                ok ' deployer !'
-                submitter 'admin,DevOps'
-                submitterParameter 'USER_SUMITTER'
-                parameters {
-                    string(name: 'VERSION', defaultValue: 'latest', description: 'une version')
-                }
-
+            when {
+                branch 'develop'
             }
+            // input {
+            //     message ' Voulez vous deployez en production ?'
+            //     ok ' deployer !'
+            //     submitter 'admin,DevOps'
+            //     submitterParameter 'USER_SUMITTER'
+            //     parameters {
+            //         string(name: 'VERSION', defaultValue: 'latest', description: 'une version')
+            //     }
+
+            // }
             steps {
                 echo 'Deploying....'
-                echo "l'utilisateur qui deploie : USER_SUMITTER ${ USER_SUMITTER }"
-                echo " la version de l'application: VERSION ${VERSION} "
+                // echo "l'utilisateur qui deploie : USER_SUMITTER ${ USER_SUMITTER }"
+                // echo " la version de l'application: VERSION ${VERSION} "
             }
         }
     }
