@@ -60,7 +60,7 @@ pipeline {
         // }
         stage('Deployment to the production') {
             when {
-                branch 'develop'
+                branch 'main'
             }
             // input {
             //     message ' Voulez vous deployez en production ?'
