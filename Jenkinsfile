@@ -22,6 +22,7 @@ pipeline {
     environment {
         MY_VAR='une variable'
         USER= 'malal'
+        DEPLOY_TO='Production'
     }
 
     // triggers {
@@ -62,7 +63,7 @@ pipeline {
             when {
                 allOf {
                     branch 'main'
-                    environment name :'DEPLOT_TO', value 'production'
+                    environment name :'DEPLOY_TO', value 'production'
 
                 }
                 
