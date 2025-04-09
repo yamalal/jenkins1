@@ -25,7 +25,8 @@ pipeline {
     }
 
     triggers {
-        cron ('* * * * *')
+        // cron ('* * * * *')
+        pullSCM ('* * * * *')
     }
     // parameters {
     //     string(name: 'NAME', defaultValue: 'Malal', description: 'Qui est ce ?')
