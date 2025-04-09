@@ -24,10 +24,10 @@ pipeline {
         USER= 'malal'
     }
 
-    triggers {
-        // cron ('* * * * *')
-        pollSCM ('* * * * *')
-    }
+    // triggers {
+    //     // cron ('* * * * *')
+    //     pollSCM ('* * * * *')
+    // }
     // parameters {
     //     string(name: 'NAME', defaultValue: 'Malal', description: 'Qui est ce ?')
     //     text(name: 'TEXT', defaultValue: 'text', description: 'une description')
@@ -58,10 +58,22 @@ pipeline {
         //         echo ' PASSWORD: ${ PASSWORD }'
         //     }
         // }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying....'
-        //     }
-        // }
+        stage('Deployment to the production') {
+            input {
+                message ' Voulez vous deployez en production ?'
+                ok ' deployer !'
+                submitter 'admin,DevOps'
+                submitterParameter 'USER_SUMITTER'
+                parameters {
+                    string(name: 'VERSION', defaultValue: 'latest', description: 'une version')
+                }
+
+            }
+            steps {
+                echo 'Deploying....'
+                echo "l'utilisateur qui deploie : USER_SUMITTER ${ USER_SUMITTER }"
+                echo " la version de l'application: VERSION ${VERSION} "
+            }
+        }
     }
 }
