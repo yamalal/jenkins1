@@ -60,7 +60,12 @@ pipeline {
         // }
         stage('Deployment to the production') {
             when {
-                branch 'main'
+                allOf {
+                    branch 'main'
+                    environment name :'DEPLOT_TO', value 'production'
+
+                }
+                
             }
             // input {
             //     message ' Voulez vous deployez en production ?'
