@@ -24,7 +24,6 @@ pipeline {
         USER= 'malal'
         DEPLOY_TO='Production'
     }
-
     // triggers {
     //     // cron ('* * * * *')
     //     pollSCM ('* * * * *')
@@ -52,7 +51,7 @@ pipeline {
 
                 }
                stages {
-                  stage ('Build') {
+                  stage('Build') {
                     steps {
                         echo "construire pour ${PLATFORM} - ${BROWSER}"
                     }
