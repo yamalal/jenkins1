@@ -52,7 +52,7 @@ pipeline {
 
                 }
                stages {
-                  stage ('Build')
+                  stage ('Build') {
                     steps {
                         echo "construire pour ${PLATFORM} - ${BROWSER}"
                     }
@@ -60,6 +60,7 @@ pipeline {
                     steps {
                         echo "test pour ${PLATFORM} - ${BROWSER}"
                     }
+                  }
                   }
                } 
             }
