@@ -38,7 +38,31 @@ pipeline {
 
     // }
     stages {
-        stage('Build') {
+        stage('Build and test ') {
+            matrix {
+              axes {
+                axis {
+                    name 'PLATFORM'
+                    values 'linux ', 'macos', 'windows'
+                }
+                axis {
+                    name 'BROWSER'
+                    values 'chrome','edge','firefox'
+                }
+
+                }
+               stages {
+                  stage ('Build')
+                    steps {
+                        echo "construire pour ${PLATFORM} - ${BROWSER}"
+                    }
+                  stage('test') {
+                    steps {
+                        echo "test pour ${PLATFORM} - ${BROWSER}"
+                    }
+                  }
+               } 
+            }
             steps {
                 echo 'Building..'
                 echo "BRANCH_NAME : ${ env.BRANCH_NAME }"
