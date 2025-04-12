@@ -2,12 +2,14 @@ pipeline {
     agent any
     tools {
        gradle  'gradle-9'
+       node 'node23'
 
     }
     stages {
         stage('build') {
             steps {
                 sh 'gradle -v'
+                sh 'node -v'
             }
         }
     }
