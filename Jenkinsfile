@@ -1,52 +1,65 @@
 pipeline {
     agent any
-    environment {
-        MY_VAR = 'une variable'
-        USER = 'malal'
-        DEPLOY_TO = 'Production'
-    }
 
     stages {
-        stage('Build and test') {
-            matrix {
-                axes {
-                    axis {
-                        name 'PLATFORM'
-                        values 'linux', 'macos', 'windows'
-                    }
-                    axis {
-                        name 'BROWSER'
-                        values 'chrome', 'edge', 'firefox'
-                    }
-                }
-                stages {
-                    stage('Build') {
-                        steps {
-                            echo "construire pour ${PLATFORM} - ${BROWSER}"
-                        }
-                    }
-                    stage('Test') {
-                        steps {
-                            echo "test pour ${PLATFORM} - ${BROWSER}"
-                        }
-                    }
-                }
-            }
-        }
-        
-        stage('Deployment to the production') {
-            when {
-                allOf {
-                    branch 'main'
-                    environment name: 'DEPLOY_TO', value: 'Production'
-                }
-            }
-            steps {
-                echo 'Deploying....'
-            }
+        stage('build') {
+           steps {
+              sh 'echo hello malal > hello.txt'
+              archiveArtifacts(artifacts: '*.txt')
+
+           } 
         }
     }
-}// pipeline {
+}
+// pipeline {
+//     agent any
+//     environment {
+//         MY_VAR = 'une variable'
+//         USER = 'malal'
+//         DEPLOY_TO = 'Production'
+//     }
+
+//     stages {
+//         stage('Build and test') {
+//             matrix {
+//                 axes {
+//                     axis {
+//                         name 'PLATFORM'
+//                         values 'linux', 'macos', 'windows'
+//                     }
+//                     axis {
+//                         name 'BROWSER'
+//                         values 'chrome', 'edge', 'firefox'
+//                     }
+//                 }
+//                 stages {
+//                     stage('Build') {
+//                         steps {
+//                             echo "construire pour ${PLATFORM} - ${BROWSER}"
+//                         }
+//                     }
+//                     stage('Test') {
+//                         steps {
+//                             echo "test pour ${PLATFORM} - ${BROWSER}"
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+        
+//         stage('Deployment to the production') {
+//             when {
+//                 allOf {
+//                     branch 'main'
+//                     environment name: 'DEPLOY_TO', value: 'Production'
+//                 }
+//             }
+//             steps {
+//                 echo 'Deploying....'
+//             }
+//         }
+//     }
+// }// pipeline {
 //     agent none
 //     stages {
 //         stage('Example Build') {
