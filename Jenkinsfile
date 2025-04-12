@@ -1,16 +1,30 @@
 pipeline {
     agent any
+    tools {
+       gradle  'gradle-9'
 
+    }
     stages {
         stage('build') {
-           steps {
-              sh 'echo hello malal > hello.txt'
-              archiveArtifacts(artifacts: '*.txt')
-
-           } 
+            steps {
+                sh 'gradle -v'
+            }
         }
     }
 }
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('build') {
+//            steps {
+//               sh 'echo hello malal > hello.txt'
+//               archiveArtifacts(artifacts: '*.txt')
+
+//            } 
+//         }
+//     }
+// }
 // pipeline {
 //     agent any
 //     environment {
